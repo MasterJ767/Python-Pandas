@@ -1,5 +1,4 @@
 from math import pi, sin, cos
-
 from direct.showbase.ShowBase import ShowBase
 from direct.task import Task
 from direct.actor.Actor import Actor
@@ -27,18 +26,9 @@ class MyApp(ShowBase):
         # Loop its animation.
         self.pandaActor.loop("walk")
 
-        self.pandaActor2 = Actor("models/panda-model",
-                                {"walk": "models/panda-walk4"})
-        self.pandaActor2.setScale(0.05, 0.05, 0.05)
-        self.pandaActor2.reparentTo(self.render)
-        # Loop its animation.
-        self.pandaActor2.loop("walk")
-
-
-
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
-        angleDegrees = task.time * 18.0
+        angleDegrees = task.time * 6.0
         angleRadians = angleDegrees * (pi / 180.0)
         self.camera.setPos(20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
         self.camera.setHpr(angleDegrees, 0, 0)
