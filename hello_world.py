@@ -32,12 +32,12 @@ class MyApp(ShowBase):
         self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
 
         # PANDA FUNCTION
-        def panda1(x,r,g,b,v1,v2,v3,u1,u2,u3):
+        def panda1(x,r1,g1,b1,r2,g2,b2,r3,g3,b3,v1,v2,v3,u1,u2,u3):
             # Load medium-sized panda
             self.pandaActor = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor.setScale(0.005, 0.005, 0.005) # medium scale
-            self.pandaActor.setColorScale(r, g, b, 100)
+            self.pandaActor.setColorScale(r2, g2, b2, 100)
             self.pandaActor.reparentTo(self.render)
             # Leg movement animation
             self.pandaActor.loop("walk")
@@ -65,7 +65,7 @@ class MyApp(ShowBase):
             self.pandaActor2 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor2.setScale(0.0025, 0.0025, 0.0025) # small scale
-            self.pandaActor2.setColorScale(r, g, b, 100)
+            self.pandaActor2.setColorScale(r1, g1, b1, 100)
             self.pandaActor2.reparentTo(self.render)
             # Leg movement animation
             self.pandaActor2.loop("walk")
@@ -93,7 +93,7 @@ class MyApp(ShowBase):
             self.pandaActor3 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor3.setScale(0.01, 0.01, 0.01) # large scale
-            self.pandaActor3.setColorScale(r, g, b, 100)
+            self.pandaActor3.setColorScale(r3, g3, b3, 1)
             self.pandaActor3.reparentTo(self.render)
             # Leg movement animation.
             self.pandaActor3.loop("walk")
@@ -117,12 +117,13 @@ class MyApp(ShowBase):
                                     name="pandaPace3")
             self.pandaPace3.loop()
 
-        def panda2(x,r,g,b,v1,v2,v3,u1,u2,u3):
+        # PANDA FUNCTION 2
+        def panda2(x,r1,g1,b1,r2,g2,b2,r3,g3,b3,v1,v2,v3,u1,u2,u3):
             # Load medium-sized panda
             self.pandaActor4 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor4.setScale(0.005, 0.005, 0.005) # medium scale
-            self.pandaActor4.setColorScale(r, g, b, 100)
+            self.pandaActor4.setColorScale(r2, g2, b2, 100)
             self.pandaActor4.reparentTo(self.render)
             # Leg movement animation
             self.pandaActor4.loop("walk")
@@ -150,7 +151,7 @@ class MyApp(ShowBase):
             self.pandaActor5 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor5.setScale(0.0025, 0.0025, 0.0025) # small scale
-            self.pandaActor5.setColorScale(r, g, b, 100)
+            self.pandaActor5.setColorScale(r1, g1, b1, 100)
             self.pandaActor5.reparentTo(self.render)
             # Leg movement animation
             self.pandaActor5.loop("walk")
@@ -178,7 +179,7 @@ class MyApp(ShowBase):
             self.pandaActor6 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor6.setScale(0.01, 0.01, 0.01) # large scale
-            self.pandaActor6.setColorScale(r, g, b, 100)
+            self.pandaActor6.setColorScale(r3, g3, b3, 1)
             self.pandaActor6.reparentTo(self.render)
             # Leg movement animation.
             self.pandaActor6.loop("walk")
@@ -202,12 +203,13 @@ class MyApp(ShowBase):
                                     name="pandaPace6")
             self.pandaPace6.loop()
 
-        def panda3(x,r,g,b,v1,v2,v3,u1,u2,u3):
+        # PANDA FUNCTION 3
+        def panda3(x,r1,g1,b1,r2,g2,b2,r3,g3,b3,v1,v2,v3,u1,u2,u3):
             # Load medium-sized panda
             self.pandaActor7 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor7.setScale(0.005, 0.005, 0.005) # medium scale
-            self.pandaActor7.setColorScale(r, g, b, 100)
+            self.pandaActor7.setColorScale(r2, g2, b2, 100)
             self.pandaActor7.reparentTo(self.render)
             # Leg movement animation
             self.pandaActor7.loop("walk")
@@ -235,7 +237,7 @@ class MyApp(ShowBase):
             self.pandaActor8 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor8.setScale(0.0025, 0.0025, 0.0025) # small scale
-            self.pandaActor8.setColorScale(r, g, b, 100)
+            self.pandaActor8.setColorScale(r1, g1, b1, 100)
             self.pandaActor8.reparentTo(self.render)
             # Leg movement animation
             self.pandaActor8.loop("walk")
@@ -263,7 +265,7 @@ class MyApp(ShowBase):
             self.pandaActor9 = Actor("models/panda-model",
                                     {"walk": "models/panda-walk4"})
             self.pandaActor9.setScale(0.01, 0.01, 0.01) # large scale
-            self.pandaActor9.setColorScale(r, g, b, 100)
+            self.pandaActor9.setColorScale(r3, g3, b3, 1)
             self.pandaActor9.reparentTo(self.render)
             # Leg movement animation.
             self.pandaActor9.loop("walk")
@@ -287,11 +289,17 @@ class MyApp(ShowBase):
                                     name="pandaPace9")
             self.pandaPace9.loop()
 
-        # panda_(x,r,g,b,v1,v2,v3,u1,u2,u3)
+        # panda_(x,r1,g1,b1,r2,g2,b2,r3,g3,b3,v1,v2,v3,u1,u2,u3)
         # x = x co-ordinate
-        # r = r value
-        # g = g value
-        # b = b value
+        # r1 = r value for small panda
+        # g1 = g value for small panda
+        # b1 = b value for small panda
+        # r2 = r value for medium panda
+        # b2 = b value for medium panda
+        # g2 = g value for medium panda
+        # r3 = r value for large panda
+        # g3 = g value for large panda
+        # b3 = b value for large panda
         # v1 = walking speed for small panda
         # v2 = walking speed for medium panda
         # v3 = walking speed for large panda
@@ -299,9 +307,9 @@ class MyApp(ShowBase):
         # u2 = turning speed for medium panda
         # u3 = turning speed for large panda
 
-        panda1(0,255,255,0,5,2.5,1.25,1,0.5,0.25)
-        panda2(5,0,255,255,1.25,5,2.5,0.25,1,0.5)
-        panda3(-5,255,0,255,2.5,1.25,5,0.5,0.25,1)
+        panda1(0,0,255,0,255,255,0,12,255,12,5,2.5,1.25,1,0.5,0.25)
+        panda2(5,255,0,0,255,0,255,255,12,12,1.25,5,2.5,0.25,1,0.5)
+        panda3(-5,0,0,255,0,255,255,12,12,255,2.5,1.25,5,0.5,0.25,1)
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
