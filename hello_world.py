@@ -36,6 +36,7 @@ class MyApp(ShowBase):
         self.pandaActor = Actor("models/panda-model",
                                 {"walk": "models/panda-walk4"})
         self.pandaActor.setScale(0.0005, 0.0005, 0.0005)
+        self.pandaActor.setColorScale(-25, 25, 25, 5)
         self.pandaActor.reparentTo(self.render)
         # Loop its animation.
         self.pandaActor.loop("walk")
@@ -68,6 +69,7 @@ class MyApp(ShowBase):
         self.pandaActor2 = Actor("models/panda-model",
                                 {"walk": "models/panda-walk4"})
         self.pandaActor2.setScale(0.005, 0.005, 0.005)
+        self.pandaActor2.setColorScale(25, -25, 25, 5)
         self.pandaActor2.reparentTo(self.render)
         # Loop its animation.
         self.pandaActor2.loop("walk")
@@ -100,6 +102,7 @@ class MyApp(ShowBase):
         self.pandaActor3 = Actor("models/panda-model",
                                 {"walk": "models/panda-walk4"})
         self.pandaActor3.setScale(0.05, 0.05, 0.05)
+        self.pandaActor3.setColorScale(25, 25, -25, 5)
         self.pandaActor3.reparentTo(self.render)
         # Loop its animation.
         self.pandaActor3.loop("walk")
