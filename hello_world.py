@@ -31,110 +31,109 @@ class MyApp(ShowBase):
         # Add the spinCameraTask procedure to the task manager.
         self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
 
-        # PANDA 1 - Tiny Panda
-        # Load and transform the panda actor.
-        self.pandaActor = Actor("models/panda-model",
-                                {"walk": "models/panda-walk4"})
-        self.pandaActor.setScale(0.0005, 0.0005, 0.0005)
-        self.pandaActor.setColorScale(0, 25, 25, 5)
-        self.pandaActor.reparentTo(self.render)
-        # Loop its animation.
-        self.pandaActor.loop("walk")
+        # PANDA 1
+        def Panda(x,r,g,b,v,u):
+            # Load medium-sized panda
+            self.pandaActor = Actor("models/panda-model",
+                                    {"walk": "models/panda-walk4"})
+            self.pandaActor.setScale(0.005, 0.005, 0.005) # medium scale
+            self.pandaActor.setColorScale(r, g, b, 100)
+            self.pandaActor.reparentTo(self.render)
+            # Leg movement animation
+            self.pandaActor.loop("walk")
+            # Walking animation
+            pandaPosInterval1 = self.pandaActor.posInterval(v,
+                                                            Point3(x, -10, 5),
+                                                            startPos=Point3(x, 10, 5))
+            pandaPosInterval2 = self.pandaActor.posInterval(v,
+                                                            Point3(x, 10, 5),
+                                                            startPos=Point3(x, -10, 5))
+            pandaHprInterval1 = self.pandaActor.hprInterval(u,
+                                                            Point3(180, 0, 0),
+                                                            startHpr=Point3(0, 0, 0))
+            pandaHprInterval2 = self.pandaActor.hprInterval(u,
+                                                            Point3(0, 0, 0),
+                                                            startHpr=Point3(180, 0, 0))
+            self.pandaPace = Sequence(pandaPosInterval1,
+                                      pandaHprInterval1,
+                                      pandaPosInterval2,
+                                      pandaHprInterval2,
+                                      name="pandaPace")
+            self.pandaPace.loop()
 
-        # Create the four lerp intervals needed for the panda to
-        # walk back and forth.
-        pandaPosInterval1 = self.pandaActor.posInterval(13,
-                                                        Point3(0, -10, 0),
-                                                        startPos=Point3(0, 10, 0))
-        pandaPosInterval2 = self.pandaActor.posInterval(13,
-                                                        Point3(0, 10, 0),
-                                                        startPos=Point3(0, -10, 0))
-        pandaHprInterval1 = self.pandaActor.hprInterval(3,
-                                                        Point3(180, 0, 0),
-                                                        startHpr=Point3(0, 0, 0))
-        pandaHprInterval2 = self.pandaActor.hprInterval(3,
-                                                        Point3(0, 0, 0),
-                                                        startHpr=Point3(180, 0, 0))
+            # Load small panda
+            self.pandaActor2 = Actor("models/panda-model",
+                                    {"walk": "models/panda-walk4"})
+            self.pandaActor2.setScale(0.0025, 0.0025, 0.0025) # small scale
+            self.pandaActor2.setColorScale(r, g, b, 100)
+            self.pandaActor2.reparentTo(self.render)
+            # Leg movement animation
+            self.pandaActor2.loop("walk")
+            # Walking animation
+            pandaPosInterval3 = self.pandaActor2.posInterval(v,
+                                                            Point3(x, -10, 7.5),
+                                                            startPos=Point3(x, 10, 7.5))
+            pandaPosInterval4 = self.pandaActor2.posInterval(v,
+                                                            Point3(x, 10, 7.5),
+                                                            startPos=Point3(x, -10, 7.5))
+            pandaHprInterval3 = self.pandaActor2.hprInterval(u,
+                                                            Point3(180, 0, 0),
+                                                            startHpr=Point3(0, 0, 0))
+            pandaHprInterval4 = self.pandaActor2.hprInterval(u,
+                                                            Point3(0, 0, 0),
+                                                            startHpr=Point3(180, 0, 0))
+            self.pandaPace2 = Sequence(pandaPosInterval3,
+                                    pandaHprInterval3,
+                                    pandaPosInterval4,
+                                    pandaHprInterval4,
+                                    name="pandaPace2")
+            self.pandaPace2.loop()
 
-        # Create and play the sequence that coordinates the intervals.
-        self.pandaPace = Sequence(pandaPosInterval1,
-                                  pandaHprInterval1,
-                                  pandaPosInterval2,
-                                  pandaHprInterval2,
-                                  name="pandaPace")
-        self.pandaPace.loop()
+            # Load big panda
+            self.pandaActor3 = Actor("models/panda-model",
+                                    {"walk": "models/panda-walk4"})
+            self.pandaActor3.setScale(0.01, 0.01, 0.01) # large scale
+            self.pandaActor3.setColorScale(r, g, b, 100)
+            self.pandaActor3.reparentTo(self.render)
+            # Leg movement animation.
+            self.pandaActor3.loop("walk")
+            # Walking animation
+            pandaPosInterval5 = self.pandaActor3.posInterval(v,
+                                                            Point3(x, -10, 0),
+                                                            startPos=Point3(x,10, 0))
+            pandaPosInterval6 = self.pandaActor3.posInterval(v,
+                                                            Point3(x, 10, 0),
+                                                            startPos=Point3(x, -10, 0))
+            pandaHprInterval5 = self.pandaActor3.hprInterval(u,
+                                                            Point3(180, 0, 0),
+                                                            startHpr=Point3(0, 0, 0))
+            pandaHprInterval6 = self.pandaActor3.hprInterval(u,
+                                                            Point3(0, 0, 0),
+                                                            startHpr=Point3(180, 0, 0))
+            self.pandaPace3 = Sequence(pandaPosInterval5,
+                                    pandaHprInterval5,
+                                    pandaPosInterval6,
+                                    pandaHprInterval6,
+                                    name="pandaPace3")
+            self.pandaPace3.loop()
 
-        # PANDA 2 - Medium-sized Panda
-        # Load and transform the panda actor.
-        self.pandaActor2 = Actor("models/panda-model",
-                                {"walk": "models/panda-walk4"})
-        self.pandaActor2.setScale(0.005, 0.005, 0.005)
-        self.pandaActor2.setColorScale(25, 0, 0, 5)
-        self.pandaActor2.reparentTo(self.render)
-        # Loop its animation.
-        self.pandaActor2.loop("walk")
+        # Panda(x,r,g,b,v,u)
+        # x = x co-ordinate
+        # r = r value
+        # g = g value
+        # b = b value
+        # v = walking speed
+        # u = turning speed
 
-        # Create the four lerp intervals needed for the panda to
-        # walk back and forth.
-        pandaPosInterva21 = self.pandaActor2.posInterval(13,
-                                                        Point3(0, -10, 0),
-                                                        startPos=Point3(0, 10, 0))
-        pandaPosInterva22 = self.pandaActor2.posInterval(13,
-                                                        Point3(0, 10, 0),
-                                                        startPos=Point3(0, -10, 0))
-        pandaHprInterva21 = self.pandaActor2.hprInterval(3,
-                                                        Point3(180, 0, 0),
-                                                        startHpr=Point3(0, 0, 0))
-        pandaHprInterva22 = self.pandaActor2.hprInterval(3,
-                                                        Point3(0, 0, 0),
-                                                        startHpr=Point3(180, 0, 0))
-
-        # Create and play the sequence that coordinates the intervals.
-        self.pandaPace2 = Sequence(pandaPosInterva21,
-                                  pandaHprInterva21,
-                                  pandaPosInterva22,
-                                  pandaHprInterva22,
-                                  name="pandaPace2")
-        self.pandaPace2.loop()
-
-        # PANDA 3 - Big Panda
-        # Load and transform the panda actor.
-        self.pandaActor3 = Actor("models/panda-model",
-                                {"walk": "models/panda-walk4"})
-        self.pandaActor3.setScale(0.05, 0.05, 0.05)
-        self.pandaActor3.setColorScale(25, 25, 0, 5)
-        self.pandaActor3.reparentTo(self.render)
-        # Loop its animation.
-        self.pandaActor3.loop("walk")
-
-        # Create the four lerp intervals needed for the panda to
-        # walk back and forth.
-        pandaPosInterva31 = self.pandaActor3.posInterval(13,
-                                                         Point3(0, -10, 0),
-                                                         startPos=Point3(0, 10,0))
-        pandaPosInterva32 = self.pandaActor2.posInterval(13,
-                                                         Point3(0, 10, 0),
-                                                         startPos=Point3(0, -10, 0))
-        pandaHprInterva31 = self.pandaActor2.hprInterval(3,
-                                                         Point3(180, 0, 0),
-                                                         startHpr=Point3(0, 0, 0))
-        pandaHprInterva32 = self.pandaActor2.hprInterval(3,
-                                                         Point3(0, 0, 0),
-                                                         startHpr=Point3(180, 0, 0))
-
-        # Create and play the sequence that coordinates the intervals.
-        self.pandaPace3 = Sequence(pandaPosInterva31,
-                                  pandaHprInterva31,
-                                  pandaPosInterva32,
-                                  pandaHprInterva32,
-                                  name="pandaPace3")
-        self.pandaPace3.loop()
+        Panda(0,255,255,0,5,1)
+        Panda(5,0,255,255,5,1)
+        Panda(-5,255,0,255,5,1)
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
-        angleDegrees = task.time * 6.0
+        angleDegrees = task.time * 12.0
         angleRadians = angleDegrees * (pi / 180.0)
-        self.camera.setPos(20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
+        self.camera.setPos(35 * sin(angleRadians), -35.0 * cos(angleRadians), 7)
         self.camera.setHpr(angleDegrees, 0, 0)
         return Task.cont
 
