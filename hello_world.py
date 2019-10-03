@@ -9,10 +9,10 @@
 #print( 3, sys.executable)
 
 from math import pi, sin, cos
-from direct.showbase.ShowBase import ShowBase
-from direct.task import Task
 from direct.actor.Actor import Actor
 from direct.interval.IntervalGlobal import Sequence
+from direct.showbase.ShowBase import ShowBase
+from direct.task import Task
 from panda3d.core import Point3
 
 class MyApp(ShowBase):
@@ -290,6 +290,51 @@ class MyApp(ShowBase):
                                     name="pandaPace9")
             self.pandaPace9.loop()
 
+        def panda4(x1,y1,x2,y2,r,g,b,v,u):
+            # Load medium-sized panda
+            self.pandaActor10 = Actor("models/panda-model",
+                                    {"walk": "models/panda-walk4"})
+            self.pandaActor10.setScale(0.005, 0.005, 0.005) # medium scale
+            self.pandaActor10.setColorScale(r, g, b, 100)
+            self.pandaActor10.reparentTo(self.render)
+            # Leg movement animation
+            self.pandaActor10.loop("walk")
+            # Walking animation
+            pandaPosInterval1 = self.pandaActor10.posInterval(v,
+                                                            Point3(x1, y2, 0),
+                                                            startPos=Point3(x1, y1, 7.5))
+            pandaPosInterval2 = self.pandaActor10.posInterval(v,
+                                                            Point3(x2, y2, 7.5),
+                                                            startPos=Point3(x1, y2, 0))
+            pandaPosInterval3 = self.pandaActor10.posInterval(v,
+                                                            Point3(x2, y1, 0),
+                                                            startPos=Point3(x2, y2, 7.5))
+            pandaPosInterval4 = self.pandaActor10.posInterval(v,
+                                                            Point3(x1, y1, 7.5),
+                                                            startPos=Point3(-x2, y1, 0))
+            pandaHprInterval1 = self.pandaActor10.hprInterval(u,
+                                                            Point3(-90, 0, 0),
+                                                            startHpr=Point3(0, 0, 0))
+            pandaHprInterval2 = self.pandaActor10.hprInterval(u,
+                                                            Point3(-180, 0, 0),
+                                                            startHpr=Point3(-90, 0, 0))
+            pandaHprInterval3 = self.pandaActor10.hprInterval(u,
+                                                            Point3(-270, 0, 0),
+                                                            startHpr=Point3(-180, 0, 0))
+            pandaHprInterval4 = self.pandaActor10.hprInterval(u,
+                                                            Point3(-360, 0, 0),
+                                                            startHpr=Point3(-270, 0, 0))
+            self.pandaPace10 = Sequence(pandaPosInterval1,
+                                      pandaHprInterval1,
+                                      pandaPosInterval2,
+                                      pandaHprInterval2,
+                                      pandaPosInterval3,
+                                      pandaHprInterval3,
+                                      pandaPosInterval4,
+                                      pandaHprInterval4,
+                                      name="pandaPace10")
+            self.pandaPace10.loop()
+
         # panda_(x,r1,g1,b1,r2,g2,b2,r3,g3,b3,v1,v2,v3,u1,u2,u3)
         # x = x co-ordinate
         # r1 = r value for small panda
@@ -312,10 +357,14 @@ class MyApp(ShowBase):
         panda1(0,0,255,0,255,255,0,255,0,0,5,2.5,1.25,1,0.5,0.25)
         panda2(5,255,0,0,255,0,255,0,0,255,1.25,5,2.5,0.25,1,0.5)
         panda3(-5,0,0,255,0,255,255,0,255,0,2.5,1.25,5,0.5,0.25,1)
+        panda4(5,10,-5,-10,255,255,255,5,1)
 
         # Adding sound
-        mySound = base.loader.loadSfx("bensound-dubstep.mp3")
-        mySound.play()
+        def sound():
+            mySound = base.loader.loadSfx("bensound-dubstep.mp3")
+            mySound.play()
+
+        sound()
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
