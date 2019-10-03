@@ -26,6 +26,7 @@ class MyApp(ShowBase):
         self.scene.reparentTo(self.render)
         # Apply scale and position transforms on the model.
         self.scene.setScale(0.5, 0.5, 0.5)
+        self.scene.setColor(255, 0, 0, 2)
         self.scene.setPos(-16, 84, 0)
 
         # Add the spinCameraTask procedure to the task manager.
@@ -71,11 +72,11 @@ class MyApp(ShowBase):
             self.pandaActor2.loop("walk")
             # Walking animation
             pandaPosInterval3 = self.pandaActor2.posInterval(v1,
-                                                            Point3(x, -10, 7.5),
+                                                            Point3(x, -10, 0),
                                                             startPos=Point3(x, 10, 7.5))
             pandaPosInterval4 = self.pandaActor2.posInterval(v1,
                                                             Point3(x, 10, 7.5),
-                                                            startPos=Point3(x, -10, 7.5))
+                                                            startPos=Point3(x, -10, 0))
             pandaHprInterval3 = self.pandaActor2.hprInterval(u1,
                                                             Point3(180, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -99,11 +100,11 @@ class MyApp(ShowBase):
             self.pandaActor3.loop("walk")
             # Walking animation
             pandaPosInterval5 = self.pandaActor3.posInterval(v3,
-                                                            Point3(x, -10, 0),
+                                                            Point3(x, -10, 7.5),
                                                             startPos=Point3(x,10, 0))
             pandaPosInterval6 = self.pandaActor3.posInterval(v3,
                                                             Point3(x, 10, 0),
-                                                            startPos=Point3(x, -10, 0))
+                                                            startPos=Point3(x, -10, 7.5))
             pandaHprInterval5 = self.pandaActor3.hprInterval(u3,
                                                             Point3(180, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -157,11 +158,11 @@ class MyApp(ShowBase):
             self.pandaActor5.loop("walk")
             # Walking animation
             pandaPosInterval3 = self.pandaActor5.posInterval(v1,
-                                                            Point3(x, -10, 7.5),
+                                                            Point3(x, -10, 0),
                                                             startPos=Point3(x, 10, 7.5))
             pandaPosInterval4 = self.pandaActor5.posInterval(v1,
                                                             Point3(x, 10, 7.5),
-                                                            startPos=Point3(x, -10, 7.5))
+                                                            startPos=Point3(x, -10, 0))
             pandaHprInterval3 = self.pandaActor5.hprInterval(u1,
                                                             Point3(180, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -185,11 +186,11 @@ class MyApp(ShowBase):
             self.pandaActor6.loop("walk")
             # Walking animation
             pandaPosInterval5 = self.pandaActor6.posInterval(v3,
-                                                            Point3(x, -10, 0),
+                                                            Point3(x, -10, 7.5),
                                                             startPos=Point3(x,10, 0))
             pandaPosInterval6 = self.pandaActor6.posInterval(v3,
                                                             Point3(x, 10, 0),
-                                                            startPos=Point3(x, -10, 0))
+                                                            startPos=Point3(x, -10, 7.5))
             pandaHprInterval5 = self.pandaActor6.hprInterval(u3,
                                                             Point3(180, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -243,11 +244,11 @@ class MyApp(ShowBase):
             self.pandaActor8.loop("walk")
             # Walking animation
             pandaPosInterval3 = self.pandaActor8.posInterval(v1,
-                                                            Point3(x, -10, 7.5),
+                                                            Point3(x, -10, 0),
                                                             startPos=Point3(x, 10, 7.5))
             pandaPosInterval4 = self.pandaActor8.posInterval(v1,
                                                             Point3(x, 10, 7.5),
-                                                            startPos=Point3(x, -10, 7.5))
+                                                            startPos=Point3(x, -10, 0))
             pandaHprInterval3 = self.pandaActor8.hprInterval(u1,
                                                             Point3(180, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -271,11 +272,11 @@ class MyApp(ShowBase):
             self.pandaActor9.loop("walk")
             # Walking animation
             pandaPosInterval5 = self.pandaActor9.posInterval(v3,
-                                                            Point3(x, -10, 0),
+                                                            Point3(x, -10, 7.5),
                                                             startPos=Point3(x,10, 0))
             pandaPosInterval6 = self.pandaActor9.posInterval(v3,
                                                             Point3(x, 10, 0),
-                                                            startPos=Point3(x, -10, 0))
+                                                            startPos=Point3(x, -10, 7.5))
             pandaHprInterval5 = self.pandaActor9.hprInterval(u3,
                                                             Point3(180, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -307,15 +308,15 @@ class MyApp(ShowBase):
         # u2 = turning speed for medium panda
         # u3 = turning speed for large panda
 
-        panda1(0,0,255,0,255,255,0,12,255,12,5,2.5,1.25,1,0.5,0.25)
-        panda2(5,255,0,0,255,0,255,255,12,12,1.25,5,2.5,0.25,1,0.5)
-        panda3(-5,0,0,255,0,255,255,12,12,255,2.5,1.25,5,0.5,0.25,1)
+        panda1(0,0,255,0,255,255,0,255,0,0,5,2.5,1.25,1,0.5,0.25)
+        panda2(5,255,0,0,255,0,255,0,0,255,1.25,5,2.5,0.25,1,0.5)
+        panda3(-5,0,0,255,0,255,255,0,255,0,2.5,1.25,5,0.5,0.25,1)
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
-        angleDegrees = task.time * 144.0
+        angleDegrees = task.time * 48.0
         angleRadians = angleDegrees * (pi / 180.0)
-        self.camera.setPos(40 * sin(angleRadians), -40.0 * cos(angleRadians), 7)
+        self.camera.setPos(42 * sin(angleRadians), -42.0 * cos(angleRadians), 7)
         self.camera.setHpr(angleDegrees, 0, 0)
         return Task.cont
 
