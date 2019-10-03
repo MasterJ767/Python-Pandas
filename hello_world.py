@@ -308,9 +308,14 @@ class MyApp(ShowBase):
         # u2 = turning speed for medium panda
         # u3 = turning speed for large panda
 
+        # Allows for easy control of certain variable in the panda generation
         panda1(0,0,255,0,255,255,0,255,0,0,5,2.5,1.25,1,0.5,0.25)
         panda2(5,255,0,0,255,0,255,0,0,255,1.25,5,2.5,0.25,1,0.5)
         panda3(-5,0,0,255,0,255,255,0,255,0,2.5,1.25,5,0.5,0.25,1)
+
+        # Adding sound
+        mySound = base.loader.loadSfx("bensound-dubstep.mp3")
+        mySound.play()
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
