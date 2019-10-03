@@ -4,10 +4,14 @@ Reflective Report
 Summary
 -------
 
+After getting past the initial setback of downloading Panda3d onto the system and updating Python to version 3.7, the tool was relatively straightforward to use. A few errors occurred when I attempted to add my own things to the code such as varying the volume of the sound randomly and I could not work out how to add more colours to the project with panda3d than red, yellow, green, cyan, blue, magenta, black and white.
 
 Past use of tools
 -----------------
 
+The only tool which I had used before this project was Python. Panda3d was a completely new python framework to me.
 
 Future development projects
 ---------------------------
+
+I intend to take some of the uses of functions and variables into future projects such as ``def __init__(self):``.
