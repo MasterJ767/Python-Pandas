@@ -366,6 +366,7 @@ class MyApp(ShowBase):
             # Generates a random float between 0 and 1, rounded to 1 decimal place
             #vol = round(random.uniform(0, 1), 1)
             music = base.loader.loadSfx("bensound-dubstep.mp3")
+            music.setVolume(0.5)
             music.play()
             # Uses a while loop with an unachievable condition so it lasts forever
             #while vol < 1.01:
