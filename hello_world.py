@@ -8,6 +8,8 @@
 #print( 2, platform.python_implementation())
 #print( 3, sys.executable)
 
+import random
+import time
 from math import pi, sin, cos
 from direct.actor.Actor import Actor
 from direct.interval.IntervalGlobal import Sequence
@@ -361,8 +363,18 @@ class MyApp(ShowBase):
 
         # Adding sound
         def sound():
-            mySound = base.loader.loadSfx("bensound-dubstep.mp3")
-            mySound.play()
+            # Generates a random float between 0 and 1, rounded to 1 decimal place
+            #vol = round(random.uniform(0, 1), 1)
+            music = base.loader.loadSfx("bensound-dubstep.mp3")
+            music.play()
+            # Uses a while loop with an unachievable condition so it lasts forever
+            #while vol < 1.01:
+                # Sets the volume of the music to random float
+                #music.setVolume(vol)
+                # Waits for the volume of the music multiplied by 60 seconds to determine how long the music plays at that volume for
+                #time.sleep(vol * 60)
+                # Regenerating the number
+                #vol = round(random.uniform(0, 1), 1)
 
         sound()
 
