@@ -367,6 +367,7 @@ class MyApp(ShowBase):
             #vol = round(random.uniform(0, 1), 1)
             music = base.loader.loadSfx("bensound-dubstep.mp3")
             music.setVolume(0.5)
+            music.setLoop(True)
             music.play()
             # Uses a while loop with an unachievable condition so it lasts forever
             #while vol < 1.01:
