@@ -5,7 +5,7 @@ from direct.actor.Actor import Actor
 from direct.interval.IntervalGlobal import Sequence
 from direct.showbase.ShowBase import ShowBase
 from direct.task import Task
-from panda3d.core import Point3
+from panda3d.core import Point3, TextNode
 
 class MyApp(ShowBase):
 
@@ -18,7 +18,7 @@ class MyApp(ShowBase):
         self.scene.reparentTo(self.render)
         # Apply scale and position transforms on the model.
         self.scene.setScale(0.5, 0.5, 0.5)
-        self.scene.setColor(255, 255, 255, 2)
+        self.scene.setColor(255, 0, 0, 2)
         self.scene.setPos(-16, 84, 0)
 
         # Add the spinCameraTask procedure to the task manager.
@@ -130,6 +130,34 @@ class MyApp(ShowBase):
             music.play()
 
         sound()
+
+        # Adding text
+        def text():
+            font = loader.loadFont('cmr12.egg')
+            text1 = TextNode('node name')
+            text1.setText("Pande")
+            text1.setFont(font)
+            text1.setSmallCaps(True)
+            text1.setSlant(-0.3)
+            text1.setTextColor(0, 0, 0, 1)
+            text1.setShadow(0.05, 0.05)
+            text1.setShadowColor(1, 0, 0, 1)
+            text1.setAlign(TextNode.ARight)
+            text2 = TextNode('node name')
+            text2.setText("monium")
+            text2.setFont(font)
+            text2.setSmallCaps(True)
+            text2.setSlant(0.3)
+            text2.setTextColor(0, 0, 0, 1)
+            text2.setShadow(0.05, 0.05)
+            text2.setShadowColor(1, 0, 0, 1)
+            text2.setAlign(TextNode.ALeft)
+            textNodePath = aspect2d.attachNewNode(text1)
+            textNodePath.setScale(0.3)
+            textNodePath = aspect2d.attachNewNode(text2)
+            textNodePath.setScale(0.3)
+
+        text()
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):

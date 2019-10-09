@@ -15,7 +15,7 @@ from direct.actor.Actor import Actor
 from direct.interval.IntervalGlobal import Sequence
 from direct.showbase.ShowBase import ShowBase
 from direct.task import Task
-from panda3d.core import Point3
+from panda3d.core import Point3, TextNode
 
 class MyApp(ShowBase):
 
@@ -364,21 +364,49 @@ class MyApp(ShowBase):
         # Adding sound
         def sound():
             # Generates a random float between 0 and 1, rounded to 1 decimal place
-            #vol = round(random.uniform(0, 1), 1)
+            ###vol = round(random.uniform(0, 1), 1)
             music = base.loader.loadSfx("bensound-dubstep.mp3")
             music.setVolume(0.5)
             music.setLoop(True)
             music.play()
             # Uses a while loop with an unachievable condition so it lasts forever
-            #while vol < 1.01:
+            ###while vol < 1.01:
                 # Sets the volume of the music to random float
                 #music.setVolume(vol)
                 # Waits for the volume of the music multiplied by 60 seconds to determine how long the music plays at that volume for
-                #time.sleep(vol * 60)
+                ###time.sleep(vol * 60)
                 # Regenerating the number
-                #vol = round(random.uniform(0, 1), 1)
+                ###vol = round(random.uniform(0, 1), 1)
 
         sound()
+
+        # Adding text
+        def text():
+            font = loader.loadFont('cmr12.egg')
+            text1 = TextNode('node name')
+            text1.setText("Pande")
+            text1.setFont(font)
+            text1.setSmallCaps(True)
+            text1.setSlant(-0.3)
+            text1.setTextColor(0, 0, 0, 1)
+            text1.setShadow(0.05, 0.05)
+            text1.setShadowColor(1, 0, 0, 1)
+            text1.setAlign(TextNode.ARight)
+            text2 = TextNode('node name')
+            text2.setText("monium")
+            text2.setFont(font)
+            text2.setSmallCaps(True)
+            text2.setSlant(0.3)
+            text2.setTextColor(0, 0, 0, 1)
+            text2.setShadow(0.05, 0.05)
+            text2.setShadowColor(1, 0, 0, 1)
+            text2.setAlign(TextNode.ALeft)
+            textNodePath = aspect2d.attachNewNode(text1)
+            textNodePath.setScale(0.3)
+            textNodePath = aspect2d.attachNewNode(text2)
+            textNodePath.setScale(0.3)
+
+        text()
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
