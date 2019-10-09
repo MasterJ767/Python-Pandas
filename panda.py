@@ -24,13 +24,27 @@ class MyApp(ShowBase):
         # Add the spinCameraTask procedure to the task manager.
         self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
 
-        panda1 = {"scale": 0.02,"red": 255,"green": 255,"blue": 0,"walk_speed": 5,"turn_speed": 1,
-                  "x_start": 0,"x_end": 0,"y_start": 10,"y_end": -10,"z_start": 0,"z_end": 0}
-        panda2 = {"scale": 0.02,"red": 0,"green": 255,"blue": 255,"walk_speed": 5,"turn_speed": 1,
-                  "x_start": 10,"x_end": 10,"y_start": 10,"y_end": -10,"z_start": 0,"z_end": 0}
-        panda3 = {"scale": 0.02,"red": 255,"green": 0,"blue": 255,"walk_speed": 5,"turn_speed": 1,
+        # Setting the Panda Parameters
+        panda1 = {"scale": 0.02,"red": 255,"green": 0,"blue": 255,"walk_speed": 5,"turn_speed": 1,
                   "x_start": -10,"x_end": -10,"y_start": 10,"y_end": -10,"z_start": 0,"z_end": 0}
+        panda2 = {"scale": 0.02,"red": 255,"green": 255,"blue": 0,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": 0,"x_end": 0,"y_start": 10,"y_end": -10,"z_start": 0,"z_end": 0}
+        panda3 = {"scale": 0.02,"red": 0,"green": 255,"blue": 255,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": 10,"x_end": 10,"y_start": 10,"y_end": -10,"z_start": 0,"z_end": 0}
+        panda4 = {"scale": 0.01,"red": 0,"green": 0,"blue": 255,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": -10,"x_end": -10,"y_start": 10,"y_end": -10,"z_start": 10,"z_end": 10}
+        panda5 = {"scale": 0.01,"red": 255,"green": 0,"blue": 0,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": 0,"x_end": 0,"y_start": 10,"y_end": -10,"z_start": 10,"z_end": 10}
+        panda6 = {"scale": 0.01,"red": 0,"green": 255,"blue": 0,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": 10,"x_end": 10,"y_start": 10,"y_end": -10,"z_start": 10,"z_end": 10}
+        panda7 = {"scale": 0.005,"red": 0,"green": 255,"blue": 255,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": -10,"x_end": -10,"y_start": 10,"y_end": -10,"z_start": 15,"z_end": 15}
+        panda8 = {"scale": 0.005,"red": 255,"green": 0,"blue": 255,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": 0,"x_end": 0,"y_start": 10,"y_end": -10,"z_start": 15,"z_end": 15}
+        panda9 = {"scale": 0.005,"red": 255,"green": 255,"blue": 0,"walk_speed": 5,"turn_speed": 1,
+                  "x_start": 10,"x_end": 10,"y_start": 10,"y_end": -10,"z_start": 15,"z_end": 15}
 
+        # Defining each Panda as a unique function
         def panda_1(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
             self.panda_actor1 = Actor("models/panda-model",
                                       {"walk": "models/panda-walk4"})
@@ -115,16 +129,197 @@ class MyApp(ShowBase):
                                       name="pandaPace3")
             self.pandaPace3.loop()
 
+        def panda_4(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
+            self.panda_actor4 = Actor("models/panda-model",
+                                      {"walk": "models/panda-walk4"})
+            self.panda_actor4.setScale(scale, scale, scale)
+            self.panda_actor4.setColorScale(red, green, blue, 100)
+            self.panda_actor4.reparentTo(self.render)
+            # Leg movement animation
+            self.panda_actor4.loop("walk")
+            # Walking animation
+            pandaPosInterval4_1 = self.panda_actor4.posInterval(walk_speed,
+                                                                Point3(x_end, y_end, z_end),
+                                                                startPos=Point3(x_start, y_start, z_start))
+            pandaPosInterval4_2 = self.panda_actor4.posInterval(walk_speed,
+                                                                Point3(x_start, y_start, z_start),
+                                                                startPos=Point3(x_end, y_end, z_end))
+            pandaHprInterval4_1 = self.panda_actor4.hprInterval(turn_speed,
+                                                                Point3(180, 0, 0),
+                                                                startHpr=Point3(0, 0, 0))
+            pandaHprInterval4_2 = self.panda_actor4.hprInterval(turn_speed,
+                                                                Point3(0, 0, 0),
+                                                                startHpr=Point3(180, 0, 0))
+            self.pandaPace4 = Sequence(pandaPosInterval4_1,
+                                      pandaHprInterval4_1,
+                                      pandaPosInterval4_2,
+                                      pandaHprInterval4_2,
+                                      name="pandaPace4")
+            self.pandaPace4.loop()
+
+        def panda_5(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
+            self.panda_actor5 = Actor("models/panda-model",
+                                      {"walk": "models/panda-walk4"})
+            self.panda_actor5.setScale(scale, scale, scale)
+            self.panda_actor5.setColorScale(red, green, blue, 100)
+            self.panda_actor5.reparentTo(self.render)
+            # Leg movement animation
+            self.panda_actor5.loop("walk")
+            # Walking animation
+            pandaPosInterval5_1 = self.panda_actor5.posInterval(walk_speed,
+                                                                Point3(x_end, y_end, z_end),
+                                                                startPos=Point3(x_start, y_start, z_start))
+            pandaPosInterval5_2 = self.panda_actor5.posInterval(walk_speed,
+                                                                Point3(x_start, y_start, z_start),
+                                                                startPos=Point3(x_end, y_end, z_end))
+            pandaHprInterval5_1 = self.panda_actor5.hprInterval(turn_speed,
+                                                                Point3(180, 0, 0),
+                                                                startHpr=Point3(0, 0, 0))
+            pandaHprInterval5_2 = self.panda_actor5.hprInterval(turn_speed,
+                                                                Point3(0, 0, 0),
+                                                                startHpr=Point3(180, 0, 0))
+            self.pandaPace5 = Sequence(pandaPosInterval5_1,
+                                      pandaHprInterval5_1,
+                                      pandaPosInterval5_2,
+                                      pandaHprInterval5_2,
+                                      name="pandaPace5")
+            self.pandaPace5.loop()
+
+        def panda_6(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
+            self.panda_actor6 = Actor("models/panda-model",
+                                      {"walk": "models/panda-walk4"})
+            self.panda_actor6.setScale(scale, scale, scale)
+            self.panda_actor6.setColorScale(red, green, blue, 100)
+            self.panda_actor6.reparentTo(self.render)
+            # Leg movement animation
+            self.panda_actor6.loop("walk")
+            # Walking animation
+            pandaPosInterval6_1 = self.panda_actor6.posInterval(walk_speed,
+                                                                Point3(x_end, y_end, z_end),
+                                                                startPos=Point3(x_start, y_start, z_start))
+            pandaPosInterval6_2 = self.panda_actor6.posInterval(walk_speed,
+                                                                Point3(x_start, y_start, z_start),
+                                                                startPos=Point3(x_end, y_end, z_end))
+            pandaHprInterval6_1 = self.panda_actor6.hprInterval(turn_speed,
+                                                                Point3(180, 0, 0),
+                                                                startHpr=Point3(0, 0, 0))
+            pandaHprInterval6_2 = self.panda_actor6.hprInterval(turn_speed,
+                                                                Point3(0, 0, 0),
+                                                                startHpr=Point3(180, 0, 0))
+            self.pandaPace6 = Sequence(pandaPosInterval6_1,
+                                      pandaHprInterval6_1,
+                                      pandaPosInterval6_2,
+                                      pandaHprInterval6_2,
+                                      name="pandaPace6")
+            self.pandaPace6.loop()
+
+        def panda_7(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
+            self.panda_actor7 = Actor("models/panda-model",
+                                      {"walk": "models/panda-walk4"})
+            self.panda_actor7.setScale(scale, scale, scale)
+            self.panda_actor7.setColorScale(red, green, blue, 100)
+            self.panda_actor7.reparentTo(self.render)
+            # Leg movement animation
+            self.panda_actor7.loop("walk")
+            # Walking animation
+            pandaPosInterval7_1 = self.panda_actor7.posInterval(walk_speed,
+                                                                Point3(x_end, y_end, z_end),
+                                                                startPos=Point3(x_start, y_start, z_start))
+            pandaPosInterval7_2 = self.panda_actor7.posInterval(walk_speed,
+                                                                Point3(x_start, y_start, z_start),
+                                                                startPos=Point3(x_end, y_end, z_end))
+            pandaHprInterval7_1 = self.panda_actor7.hprInterval(turn_speed,
+                                                                Point3(180, 0, 0),
+                                                                startHpr=Point3(0, 0, 0))
+            pandaHprInterval7_2 = self.panda_actor7.hprInterval(turn_speed,
+                                                                Point3(0, 0, 0),
+                                                                startHpr=Point3(180, 0, 0))
+            self.pandaPace7 = Sequence(pandaPosInterval7_1,
+                                      pandaHprInterval7_1,
+                                      pandaPosInterval7_2,
+                                      pandaHprInterval7_2,
+                                      name="pandaPace7")
+            self.pandaPace7.loop()
+
+        def panda_8(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
+            self.panda_actor8 = Actor("models/panda-model",
+                                      {"walk": "models/panda-walk4"})
+            self.panda_actor8.setScale(scale, scale, scale)
+            self.panda_actor8.setColorScale(red, green, blue, 100)
+            self.panda_actor8.reparentTo(self.render)
+            # Leg movement animation
+            self.panda_actor8.loop("walk")
+            # Walking animation
+            pandaPosInterval8_1 = self.panda_actor8.posInterval(walk_speed,
+                                                                Point3(x_end, y_end, z_end),
+                                                                startPos=Point3(x_start, y_start, z_start))
+            pandaPosInterval8_2 = self.panda_actor8.posInterval(walk_speed,
+                                                                Point3(x_start, y_start, z_start),
+                                                                startPos=Point3(x_end, y_end, z_end))
+            pandaHprInterval8_1 = self.panda_actor8.hprInterval(turn_speed,
+                                                                Point3(180, 0, 0),
+                                                                startHpr=Point3(0, 0, 0))
+            pandaHprInterval8_2 = self.panda_actor8.hprInterval(turn_speed,
+                                                                Point3(0, 0, 0),
+                                                                startHpr=Point3(180, 0, 0))
+            self.pandaPace8 = Sequence(pandaPosInterval8_1,
+                                      pandaHprInterval8_1,
+                                      pandaPosInterval8_2,
+                                      pandaHprInterval8_2,
+                                      name="pandaPace8")
+            self.pandaPace8.loop()
+
+        def panda_9(scale, red, green, blue, walk_speed, turn_speed, x_start, x_end, y_start, y_end, z_start, z_end):
+            self.panda_actor9 = Actor("models/panda-model",
+                                      {"walk": "models/panda-walk4"})
+            self.panda_actor9.setScale(scale, scale, scale)
+            self.panda_actor9.setColorScale(red, green, blue, 100)
+            self.panda_actor9.reparentTo(self.render)
+            # Leg movement animation
+            self.panda_actor9.loop("walk")
+            # Walking animation
+            pandaPosInterval9_1 = self.panda_actor9.posInterval(walk_speed,
+                                                                Point3(x_end, y_end, z_end),
+                                                                startPos=Point3(x_start, y_start, z_start))
+            pandaPosInterval9_2 = self.panda_actor9.posInterval(walk_speed,
+                                                                Point3(x_start, y_start, z_start),
+                                                                startPos=Point3(x_end, y_end, z_end))
+            pandaHprInterval9_1 = self.panda_actor9.hprInterval(turn_speed,
+                                                                Point3(180, 0, 0),
+                                                                startHpr=Point3(0, 0, 0))
+            pandaHprInterval9_2 = self.panda_actor9.hprInterval(turn_speed,
+                                                                Point3(0, 0, 0),
+                                                                startHpr=Point3(180, 0, 0))
+            self.pandaPace9 = Sequence(pandaPosInterval9_1,
+                                      pandaHprInterval9_1,
+                                      pandaPosInterval9_2,
+                                      pandaHprInterval9_2,
+                                      name="pandaPace9")
+            self.pandaPace9.loop()
+
+        # Calling each Panda function with the parameters set in the dictionaries at the top
         panda_1(panda1["scale"],panda1["red"],panda1["green"],panda1["blue"],panda1["walk_speed"],panda1["turn_speed"],
                 panda1["x_start"],panda1["x_end"],panda1["y_start"],panda1["y_end"],panda1["z_start"],panda1["z_end"])
         panda_2(panda2["scale"],panda2["red"],panda2["green"],panda2["blue"],panda2["walk_speed"],panda2["turn_speed"],
                 panda2["x_start"],panda2["x_end"],panda2["y_start"],panda2["y_end"],panda2["z_start"],panda2["z_end"])
         panda_3(panda3["scale"],panda3["red"],panda3["green"],panda3["blue"],panda3["walk_speed"],panda3["turn_speed"],
                 panda3["x_start"],panda3["x_end"],panda3["y_start"],panda3["y_end"],panda3["z_start"],panda3["z_end"])
+        panda_4(panda4["scale"],panda4["red"],panda4["green"],panda4["blue"],panda4["walk_speed"],panda4["turn_speed"],
+                panda4["x_start"],panda4["x_end"],panda4["y_start"],panda4["y_end"],panda4["z_start"],panda4["z_end"])
+        panda_5(panda5["scale"],panda5["red"],panda5["green"],panda5["blue"],panda5["walk_speed"],panda5["turn_speed"],
+                panda5["x_start"],panda5["x_end"],panda5["y_start"],panda5["y_end"],panda5["z_start"],panda5["z_end"])
+        panda_6(panda6["scale"],panda6["red"],panda6["green"],panda6["blue"],panda6["walk_speed"],panda6["turn_speed"],
+                panda6["x_start"],panda6["x_end"],panda6["y_start"],panda6["y_end"],panda6["z_start"],panda6["z_end"])
+        panda_7(panda7["scale"],panda7["red"],panda7["green"],panda7["blue"],panda7["walk_speed"],panda7["turn_speed"],
+                panda7["x_start"],panda7["x_end"],panda7["y_start"],panda7["y_end"],panda7["z_start"],panda7["z_end"])
+        panda_8(panda8["scale"],panda8["red"],panda8["green"],panda8["blue"],panda8["walk_speed"],panda8["turn_speed"],
+                panda8["x_start"],panda8["x_end"],panda8["y_start"],panda8["y_end"],panda8["z_start"],panda8["z_end"])
+        panda_9(panda9["scale"],panda9["red"],panda9["green"],panda9["blue"],panda9["walk_speed"],panda9["turn_speed"],
+                panda9["x_start"],panda9["x_end"],panda9["y_start"],panda9["y_end"],panda9["z_start"],panda9["z_end"])
 
         # Adding sound
         def sound():
-            music = base.loader.loadSfx("bensound-dubstep.mp3")
+            music = self.loader.loadSfx("bensound-dubstep.mp3")
             music.setVolume(0.5)
             music.setLoop(True)
             music.play()

@@ -313,7 +313,7 @@ class MyApp(ShowBase):
                                                             startPos=Point3(x2, y2, 7.5))
             pandaPosInterval4 = self.pandaActor10.posInterval(v,
                                                             Point3(x1, y1, 7.5),
-                                                            startPos=Point3(-x2, y1, 0))
+                                                            startPos=Point3(x2, y1, 0))
             pandaHprInterval1 = self.pandaActor10.hprInterval(u,
                                                             Point3(-90, 0, 0),
                                                             startHpr=Point3(0, 0, 0))
@@ -365,7 +365,7 @@ class MyApp(ShowBase):
         def sound():
             # Generates a random float between 0 and 1, rounded to 1 decimal place
             ###vol = round(random.uniform(0, 1), 1)
-            music = base.loader.loadSfx("bensound-dubstep.mp3")
+            music = self.loader.loadSfx("bensound-dubstep.mp3")
             music.setVolume(0.5)
             music.setLoop(True)
             music.play()
