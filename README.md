@@ -3,9 +3,9 @@ Portfolio 1
 
 This package is build as part of the CSC1034: Portfolio-1.
 
-Type `python hello_world.py` to see some useful information.
+Type `python panda.py` to see some useful information.
 
-Type `panda.py` to see my failed attempt at cleaning the code up a bit.
+Type `python hello_world.py` to see the original, untidy version.
 
 Music: https://www.bensound.com
 
