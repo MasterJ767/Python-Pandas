@@ -1,3 +1,4 @@
+import time
 from math import pi, sin, cos
 from direct.actor.Actor import Actor
 from direct.interval.IntervalGlobal import Sequence
@@ -603,14 +604,23 @@ class MyApp(ShowBase):
         panda_16(panda16["scale"],panda16["red"],panda16["green"],panda16["blue"],panda16["walk_speed"],panda16["turn_speed"],
                 panda16["x_start"],panda16["x_end"],panda16["y_start"],panda16["y_end"],panda16["z_start"],panda16["z_end"])
 
-        # Adding sound
+        # Adding general background sound
         def sound():
-            music = self.loader.loadSfx("bensound-dubstep.mp3")
-            music.setVolume(0.5)
+            music = base.loader.loadSfx("bensound-dubstep.mp3")
+            music.setVolume(0.6)
             music.setLoop(True)
             music.play()
 
         sound()
+
+        # Adding panda specific sound
+        def sound2():
+            music2 = base.loader.loadSfx("Panda_idle.ogg")
+            music2.setVolume(0.9)
+            music2.setLoop(True)
+            music2.play()
+
+        sound2()
 
         # Adding text
         def text():

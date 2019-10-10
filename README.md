@@ -7,7 +7,9 @@ Type `python panda.py` to see some useful information.
 
 Type `python hello_world.py` to see the original, untidy version.
 
-Music: https://www.bensound.com
+Dubstep Music: https://www.bensound.com
+
+Panda Sound: https://minecraft.gamepedia.com/Panda
 
 Copyright, 2019, Newcastle University
 

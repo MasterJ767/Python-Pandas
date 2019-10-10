@@ -9,8 +9,9 @@ https://www.panda3d.org/manual/ website generates: the standard Panda3d scenery 
 Then it renders 16 pandas of varying sizes and colours and sets them up to walk on predefined motions paths.
 Using functions I have made it possible to vary the scale, walk speed, turn speed, colour and the starting and ending x,
 y and z co-ordinates for all 16 pandas. Pandas 13 - 16 take a square, clock-wise route around the map unlike the other
-12 pandas who continue to move in a singular plane. Finally I added a royalty free mp3 file to play in the background
-and a large piece of text stating "Pandemonium" to caption this creation and add an additional dimension to it.
+12 pandas who continue to move in a singular plane. Finally I added a royalty free mp3 file to play in the background,
+some idle Panda noises and a large piece of text stating "Pandemonium" to caption this creation and add an additional 
+dimension to it.
 
 I initially found it very difficult to get started on this project as I had trouble installing Panda3d and ensuring
 that I was using the correct version of Python (version 3.7). Once I got past this setback I found the Panda3d tool was 
